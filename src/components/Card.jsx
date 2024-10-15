@@ -5,10 +5,14 @@ const Card = ({ image, name, price, status, link, spec }) => {
     <Link
       href={link}
       target="_blank"
-      className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 hover:cursor-pointer size-[100%] hover:size-[99%]"
+      className="card max-w-60 bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 hover:cursor-pointer size-[100%]"
     >
       <figure>
-        <img src={image} alt={name} />
+        <img
+          src={image}
+          alt={name}
+          className="w-full object-cover hover:scale-105 transition-all duration-500"
+        />
       </figure>
       <div className="card-body -mt-4">
         <h2 className="card-title text-sm">{name}</h2>
@@ -18,9 +22,6 @@ const Card = ({ image, name, price, status, link, spec }) => {
         </div>
         <div className="card-actions justify-end h-full"></div>
         <p className="text-secondary text-md font-bold">Rp. {price}</p>
-        {/* <a href={link} className="link link-primary -mt-2 lg:mt-0 text-xs">
-          More Info
-        </a> */}
       </div>
     </Link>
   );

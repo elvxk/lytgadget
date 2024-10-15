@@ -14,9 +14,6 @@ export async function createProduct(formData, image) {
     },
   });
   if (addProduct) {
-    console.log("Comment updated successfully:", addProduct);
     return true;
-  } else {
-    console.error("Comment not found or update failed.");
   }
 }
