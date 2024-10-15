@@ -2,8 +2,11 @@ import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Searchbar from "@/components/Searchbar";
+import prisma from "@/libs/prisma";
 
-export default function Home() {
+export default async function Home() {
+  const products = await prisma.products.findMany();
+
   return (
     <>
       <Navbar />
@@ -11,58 +14,17 @@ export default function Home() {
         <h1 className="text-xl font-bold mb-4">LYTGADGET.ID READY STOCK</h1>
         <Searchbar />
         <div className="py-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-8">
-          <Card
-            name="Iphone 13 Promax"
-            price={9800000}
-            status="IBOX"
-            spec="8/256"
-            link="https://instagram.com/elvxk"
-            image="https://wallpapers.com/images/featured/yellow-square-012q36x57zmvf259.jpg"
-          />
-          <Card
-            name="Samsung S23 FE sdsad"
-            price={9800000}
-            status="NEW"
-            spec="8/512"
-            link="https://instagram.com"
-            image="https://wallpapers.com/images/featured/yellow-square-012q36x57zmvf259.jpg"
-          />
-          <Card
-            name="Iphone XR"
-            price={9800000}
-            status="SECCOND"
-            spec="12/512"
-            link="https://instagram.com"
-            image="https://wallpapers.com/images/featured/yellow-square-012q36x57zmvf259.jpg"
-          />
-          <Card
-            name="Samsung S24 Ultra"
-            price={19800000}
-            status="NEW"
-            link="https://instagram.com"
-            image="https://wallpapers.com/images/featured/yellow-square-012q36x57zmvf259.jpg"
-          />
-          <Card
-            name="Samsusng S24 FE"
-            price={9999000}
-            status="NEW"
-            link="https://instagram.com"
-            image="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          />
-          <Card
-            name="Samsusng S24 FE"
-            price={9999000}
-            status="NEW"
-            link="https://instagram.com"
-            image="https://wallpapers.com/images/featured/yellow-square-012q36x57zmvf259.jpg"
-          />
-          <Card
-            name="Samsusng S24 FE"
-            price={9999000}
-            status="NEW"
-            link="https://instagram.com"
-            image="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          />
+          {products.map((product) => (
+            <Card
+              key={product.id}
+              name={product.name}
+              price={product.price}
+              status={product.status}
+              spec={product.ram}
+              link={product.link}
+              image={product.image}
+            />
+          ))}
         </div>
       </div>
       <Footer />
