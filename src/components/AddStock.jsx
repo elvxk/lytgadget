@@ -67,6 +67,16 @@ const AddStock = ({ isVisible, onClose }) => {
             required
             className="w-full rounded-md bg-white px-3.5 py-2 text-sm outline-none ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:ring-[1.5px] focus:ring-zinc-950 data-[invalid]:ring-red-400"
           />
+          <label htmlFor="link" className="text-sm font-medium text-zinc-950">
+            Link Instagram
+          </label>
+          <input
+            name="link"
+            type="text"
+            placeholder="Instagram product link"
+            required
+            className="w-full rounded-md bg-white px-3.5 py-2 text-sm outline-none ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:ring-[1.5px] focus:ring-zinc-950 data-[invalid]:ring-red-400"
+          />
           <label htmlFor="image" className="text-sm font-medium text-zinc-950">
             Gambar
           </label>
