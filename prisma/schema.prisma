@@ -9,13 +9,13 @@ datasource db {
 }
 
 model Products {
-  id        String   @id
+  id        String   @id @default(uuid())
   name      String
   price     Int
   status    String
   image     String
   createdAt DateTime @default(now())
-  updatedAt DateTime
-  ram       String?
-  link      String?
+  updatedAt DateTime @updatedAt
+  ram       String
+  link      String
 }
