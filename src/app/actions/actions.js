@@ -17,3 +17,29 @@ export async function createProduct(formData, image) {
     return true;
   }
 }
+export async function deleteProduct(formData) {
+  const deleteProduct = await prisma.products.delete({
+    where: {
+      id: formData.id,
+    },
+  });
+  if (deleteProduct) {
+    return true;
+  }
+}
+
+export async function updateProduct(formData) {
+  console.log(formData);
+
+  // const deleteProduct = await prisma.products.update({
+  //   where: {
+  //     id: formData.id,
+  //   },
+  //   data: {
+  //     name: formData.name
+  //   }
+  // });
+  // if (deleteProduct) {
+  //   return true;
+  // }
+}

@@ -1,5 +1,5 @@
 "use client";
-import AddStock from "@/components/AddStock";
+import AddStock from "@/components/modal/AddStock";
 import Link from "next/link";
 import { useState } from "react";
 import { useClerk } from "@clerk/nextjs";
@@ -26,10 +26,10 @@ const Admin = () => {
           >
             <AiFillFolderAdd /> Tambah Stock
           </button>
-          <button className="btn btn-primary w-full">
+          <Link href="/admin/edit" className="btn btn-primary w-full">
             <AiFillEdit />
             Edit Stock
-          </button>
+          </Link>
           <button
             className="btn btn-primary w-full"
             onClick={() => openUserProfile()}
