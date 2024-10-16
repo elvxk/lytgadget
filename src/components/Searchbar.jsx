@@ -1,7 +1,22 @@
-const Searchbar = () => {
+import { useState } from "react";
+
+const Searchbar = ({ onChangeCallback }) => {
+  const [value, setValue] = useState("");
+
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+    setValue(inputValue);
+    onChangeCallback && onChangeCallback(inputValue);
+  };
   return (
     <label className="input input-bordered flex items-center gap-2">
-      <input type="text" className="grow" placeholder="Search" />
+      <input
+        type="text"
+        value={value}
+        onChange={handleChange}
+        className="grow"
+        placeholder="Search"
+      />
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
