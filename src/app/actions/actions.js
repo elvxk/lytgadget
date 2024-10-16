@@ -28,18 +28,27 @@ export async function deleteProduct(formData) {
   }
 }
 
-export async function updateProduct(formData) {
+export async function updateProduct(formData, data, image) {
   console.log(formData);
+  console.log(data);
+  console.log(image);
 
-  // const deleteProduct = await prisma.products.update({
-  //   where: {
-  //     id: formData.id,
-  //   },
-  //   data: {
-  //     name: formData.name
-  //   }
-  // });
-  // if (deleteProduct) {
-  //   return true;
-  // }
+  // return true;
+
+  const updateProduct = await prisma.products.update({
+    where: {
+      id: data.id,
+    },
+    data: {
+      name: formData.get("nama"),
+      status: formData.get("status"),
+      ram: formData.get("ram"),
+      price: Number(formData.get("price")),
+      link: formData.get("link"),
+      image: image,
+    },
+  });
+  if (updateProduct) {
+    return false;
+  }
 }

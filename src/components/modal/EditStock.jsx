@@ -1,12 +1,12 @@
 "use client";
-import { createProduct, deleteProduct } from "@/app/actions/actions";
+import { deleteProduct, updateProduct } from "@/app/actions/actions";
 import { CldUploadWidget } from "next-cloudinary";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 
-const AddStock = ({ isVisible, onClose, data }) => {
+const EditStock = ({ isVisible, onClose, data }) => {
   if (!isVisible) return null;
 
   const handleClose = (e) => {
@@ -14,18 +14,15 @@ const AddStock = ({ isVisible, onClose, data }) => {
   };
 
   const [onUpload, setOnUpload] = useState(data.image);
-  const [image, setImage] = useState("");
   const [warn, setWarn] = useState(false);
 
   const handleSubmit = (formData) => {
-    if (!image) {
-      setWarn(true);
-      return;
-    }
-
-    if (createProduct(formData, image)) {
-      alert("Success Add New Stock");
-      onClose();
+    if (confirm("Are you sure update this product?")) {
+      if (updateProduct(formData, data, onUpload)) {
+        alert("Success Update Product");
+        onClose();
+        router.push("/admin");
+      }
     }
   };
 
@@ -52,6 +49,34 @@ const AddStock = ({ isVisible, onClose, data }) => {
         </button>
         <div className=" bg-white rounded-xl p-4">
           <h3 className="text-lg font-bold mb-4">Edit Stock</h3>
+          <div className="w-full flex items-center justify-center flex-col gap-2 rounded-md bg-white px-3.5 py-2 text-sm outline-none ring-1 ring-inset ring-zinc-300 ">
+            <img src={onUpload} alt="uploaded" className="max-w-24 max-h-24" />
+            <CldUploadWidget
+              signatureEndpoint="/api/sign-cloudinary-params"
+              onSuccess={(result) => {
+                setOnUpload(result.info.secure_url);
+              }}
+              uploadPreset="lytgadget"
+              options={{
+                sources: ["local"],
+                multiple: false,
+                resourceType1: "image",
+                maxFileSize: 4000000,
+              }}
+            >
+              {({ open }) => {
+                return (
+                  <button
+                    className="btn btn-base-200 btn-sm text-sm rounded-md items-center"
+                    onClick={() => open()}
+                  >
+                    <MdOutlineAddPhotoAlternate />
+                    Upload an Image
+                  </button>
+                );
+              }}
+            </CldUploadWidget>
+          </div>
           <form action={handleSubmit}>
             <label htmlFor="nama" className="text-sm font-medium text-zinc-950">
               Nama Barang
@@ -114,60 +139,22 @@ const AddStock = ({ isVisible, onClose, data }) => {
               required
               className="w-full rounded-md bg-white px-3.5 py-2 text-sm outline-none ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:ring-[1.5px] focus:ring-zinc-950 data-[invalid]:ring-red-400"
             />
-            <label
-              htmlFor="image"
-              className="text-sm font-medium text-zinc-950"
-            >
-              <input
-                defaultValue={data.image}
-                type="text"
-                className="hidden w-full rounded-md bg-white px-3.5 py-2 text-sm outline-none ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:ring-[1.5px] focus:ring-zinc-950 data-[invalid]:ring-red-400"
-                required
-                name="image"
-                disabled
-              />
-              Gambar
-            </label>
+            <input
+              defaultValue={onUpload}
+              type="text"
+              className="hidden w-full rounded-md bg-white px-3.5 py-2 text-sm outline-none ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:ring-[1.5px] focus:ring-zinc-950 data-[invalid]:ring-red-400"
+              required
+              name="image"
+              disabled
+            />
             <p
               className={`text-red-500 justify-center flex ${
-                !warn || image ? "hidden" : ""
+                !warn ? "hidden" : ""
               }`}
             >
               Silahkan upload gambar
             </p>
-            <div className="w-full flex items-center justify-center flex-col gap-2 rounded-md bg-white px-3.5 py-2 text-sm outline-none ring-1 ring-inset ring-zinc-300 ">
-              <img
-                src={onUpload}
-                alt="uploaded"
-                className="max-w-24 max-h-24"
-              />
-              <CldUploadWidget
-                signatureEndpoint="/api/sign-cloudinary-params"
-                onSuccess={(result) => {
-                  setOnUpload(result.info.secure_url);
-                  setImage(result.info.secure_url);
-                }}
-                uploadPreset="lytgadget"
-                options={{
-                  sources: ["local"],
-                  multiple: false,
-                  resourceType1: "image",
-                  maxFileSize: 4000000,
-                }}
-              >
-                {({ open }) => {
-                  return (
-                    <button
-                      className="btn btn-base-200 btn-sm text-sm rounded-md items-center"
-                      onClick={() => open()}
-                    >
-                      <MdOutlineAddPhotoAlternate />
-                      Upload an Image
-                    </button>
-                  );
-                }}
-              </CldUploadWidget>
-            </div>
+
             <div className="flex items-center justify-center mt-4">
               <button type="submit" className="btn btn-primary w-full">
                 Update Stock
@@ -182,4 +169,4 @@ const AddStock = ({ isVisible, onClose, data }) => {
     </div>
   );
 };
-export default AddStock;
+export default EditStock;

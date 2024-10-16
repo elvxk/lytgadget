@@ -103,16 +103,16 @@ const AddStock = ({ isVisible, onClose }) => {
               htmlFor="image"
               className="text-sm font-medium text-zinc-950"
             >
-              <input
-                type="text"
-                className="hidden w-full rounded-md bg-white px-3.5 py-2 text-sm outline-none ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:ring-[1.5px] focus:ring-zinc-950 data-[invalid]:ring-red-400"
-                required
-                name="image"
-                value={image}
-                disabled
-              />
               Gambar
             </label>
+            <input
+              type="text"
+              className="hidden w-full rounded-md bg-white px-3.5 py-2 text-sm outline-none ring-1 ring-inset ring-zinc-300 hover:ring-zinc-400 focus:ring-[1.5px] focus:ring-zinc-950 data-[invalid]:ring-red-400"
+              required
+              name="image"
+              value={image}
+              disabled
+            />
             <p
               className={`text-red-500 justify-center flex ${
                 !warn || image ? "hidden" : ""
