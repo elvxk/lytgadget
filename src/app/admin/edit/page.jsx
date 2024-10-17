@@ -15,7 +15,7 @@ export default function EditStock() {
   const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/products", {
+    fetch("/api/products", {
       method: "POST",
     })
       .then((res) => res.json())
