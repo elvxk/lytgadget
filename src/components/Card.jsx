@@ -14,14 +14,16 @@ const Card = ({ image, name, price, status, link, spec }) => {
           className="w-full object-cover hover:scale-105 transition-all duration-500"
         />
       </figure>
-      <div className="card-body -mt-4">
+      <div className="card-body -m-4 ">
         <h2 className="card-title text-sm">{name}</h2>
-        <div className="flex gap-2 items-center mt-2">
+        <div className="flex gap-2 items-center">
           <div className="badge badge-ghost rounded-md">{spec}</div>
-          <p className="text-neutral-content text-xs">{status}</p>
         </div>
+        <p className="text-neutral-content text-xs">{status}</p>
         <div className="card-actions justify-end h-full"></div>
-        <p className="text-secondary text-md font-bold">Rp. {price}</p>
+        <p className="text-secondary text-xs font-bold">
+          IDR {new Intl.NumberFormat("id-ID").format(price)}
+        </p>
       </div>
     </Link>
   );

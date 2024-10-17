@@ -24,12 +24,14 @@ const CardEdit = ({ data }) => {
         </figure>
         <div className="card-body -mt-4">
           <h2 className="card-title text-sm">{data.name}</h2>
-          <div className="flex gap-2 items-center mt-2">
+          <div className="flex gap-2 items-center">
             <div className="badge badge-ghost rounded-md">{data.ram}</div>
-            <p className="text-neutral-content text-xs">{data.status}</p>
           </div>
+          <p className="text-neutral-content text-xs">{data.status}</p>
           <div className="card-actions justify-end h-full"></div>
-          <p className="text-secondary text-md font-bold">Rp. {data.price}</p>
+          <p className="text-secondary text-xs font-bold">
+            IDR {new Intl.NumberFormat("id-ID").format(price)}
+          </p>
         </div>
       </button>
       <EditStock
