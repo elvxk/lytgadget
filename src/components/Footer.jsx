@@ -4,7 +4,11 @@ const Footer = () => {
   return (
     <footer className="bg-neutral gap-2 text-neutral-content flex flex-col justify-center items-center p-4">
       <p className="font-bold">LYTGADGET.ID</p>
-      <a href="" className="text-center text-xs text-base-500 -mt-2">
+      <a
+        href="https://maps.app.goo.gl/dbqYiLiqwNu2J1wo9"
+        target="_blank"
+        className="text-center text-xs text-base-500 -mt-2"
+      >
         Jl. Dr. Wahidin Sudiro Husodo, Ringinsari, Ringinpitu, Kec. Kedungwaru,
         Tulungagung, Jawa Timur
       </a>

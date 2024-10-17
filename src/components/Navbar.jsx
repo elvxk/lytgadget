@@ -2,7 +2,7 @@ import Search from "./Searchbar";
 
 const Navbar = () => {
   return (
-    <div className="z-50 fixed navbar bg-base-200 shadow-lg flex justify-between items-center rounded-b-2xl">
+    <div className="z-50 fixed navbar bg-white shadow-md flex justify-between items-center rounded-b-2xl">
       <div className="flex -space-x-4">
         <img
           src="https://res.cloudinary.com/lytgadget/image/upload/v1728827834/pbhuu3qvgtocpwxmxiog.webp"
