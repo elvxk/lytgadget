@@ -30,7 +30,7 @@ const CardEdit = ({ data }) => {
           <p className="text-neutral-content text-xs">{data.status}</p>
           <div className="card-actions justify-end h-full"></div>
           <p className="text-secondary text-xs font-bold">
-            IDR {new Intl.NumberFormat("id-ID").format(price)}
+            IDR {new Intl.NumberFormat("id-ID").format(data.price)}
           </p>
         </div>
       </button>
