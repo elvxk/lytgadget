@@ -14,7 +14,7 @@ const Admin = () => {
     <>
       <div className="h-screen flex flex-col items-center justify-center">
         <img
-          src="https://res.cloudinary.com/lytgadget/image/upload/v1729017373/lytgadget/c2gwr5cqjojrhqch8gue.webp"
+          src="https://res.cloudinary.com/lytgadget/image/upload/v1729147650/qjezocjwgbyuqkxmvriy.webp"
           alt="LYT GADGET"
           className="mx-auto size-20 text-zinc-950 "
         />
