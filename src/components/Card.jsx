@@ -1,12 +1,9 @@
 import Link from "next/link";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const Card = ({ image, name, price, status, link, spec }) => {
   return (
-    <Link
-      href={link}
-      target="_blank"
-      className="card max-w-60 bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 hover:cursor-pointer size-[100%]"
-    >
+    <div className="card max-w-60 bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 hover:cursor-pointer size-[100%]">
       <figure>
         <img
           src={image}
@@ -20,12 +17,23 @@ const Card = ({ image, name, price, status, link, spec }) => {
           <div className="badge badge-ghost rounded-md">{spec}</div>
         </div>
         <p className="text-neutral-content text-xs">{status}</p>
-        <div className="card-actions justify-end h-full"></div>
+        <div className="card-actions justify-end -mt-2 h-full"></div>
         <p className="text-secondary text-xs font-bold">
           IDR {new Intl.NumberFormat("id-ID").format(price)}
         </p>
+        <div className="flex gap-2 just items-center">
+          <Link href={link} target="_blank">
+            <FaInstagram />
+          </Link>
+          <Link
+            href={`https://wa.me/6285880231142?text=Hai kak, apakah *${name}* variant *${spec}* masih ready ?`}
+            target="_blank"
+          >
+            <FaWhatsapp />
+          </Link>
+        </div>
       </div>
-    </Link>
+    </div>
   );
 };
 export default Card;
