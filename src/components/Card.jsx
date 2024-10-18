@@ -3,7 +3,7 @@ import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const Card = ({ image, name, price, status, link, spec }) => {
   return (
-    <div className="card max-w-60 bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 hover:cursor-pointer size-[100%]">
+    <div className="card max-w-60 bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 size-[100%]">
       <figure>
         <img
           src={image}
@@ -21,11 +21,16 @@ const Card = ({ image, name, price, status, link, spec }) => {
         <p className="text-secondary text-xs font-bold">
           IDR {new Intl.NumberFormat("id-ID").format(price)}
         </p>
-        <div className="flex gap-2 just items-center">
-          <Link href={link} target="_blank">
+        <div className="flex items-center">
+          <Link
+            className="hover:bg-accent p-1 rounded-full hover:text-white transition-all"
+            href={link}
+            target="_blank"
+          >
             <FaInstagram />
           </Link>
           <Link
+            className="hover:bg-accent p-1 rounded-full hover:text-white transition-all"
             href={`https://wa.me/6285880231142?text=Hai kak, apakah *${name}* variant *${spec}* masih ready ?`}
             target="_blank"
           >
