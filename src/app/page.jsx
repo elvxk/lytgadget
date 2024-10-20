@@ -27,7 +27,7 @@ export default function Home() {
 
   const filterItems = (searchTerm) => {
     const filteredItems = products.filter((prod) =>
-      prod.name.toLowerCase().includes(searchTerm.toLowerCase())
+      prod.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
     setSearchItem(filteredItems);
